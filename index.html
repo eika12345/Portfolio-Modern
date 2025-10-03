@@ -16,6 +16,7 @@
   
 
   <script>
+    // preloader //
   document.addEventListener("DOMContentLoaded", () => {
     let progress = 0;
     const progressText = document.getElementById("progress-text");
@@ -55,6 +56,7 @@
 
 </head>
 <body>
+
    <!-- Loading Screen -->
 <div id="preloader">
   <div class="loader">
@@ -65,7 +67,7 @@
   <!-- Navbar -->
   <nav class="navbar">
   <div class="container">
-    <a href="#">
+    <a href="index.html">
       <img src="images/ep.logo.png" alt="Logo" class="logo-img">
     </a>
     <div class="nav-links">
@@ -75,24 +77,27 @@
 </nav>
 
   <!-- Hero -->
+     <main id="main-content">
   <section class="hero">
-    <div class="hero-text" data-aos="fade-up">
-      <h2>Hi, I'm Alex 👋</h2>
-      <p>Frontend Developer</p>
-      <a href="#projects" class="btn-primary">See My Work</a>
+    <div class="hero-text">
+      <h2>Hi, I'm Erikas </h2>
+      <p>I make websites.</p>
     </div>
-    <div class="hero-animation" data-aos="fade-left">
-      <img src="images/hero-illustration.png" alt="Hero Illustration">
-    </div>
+    
   </section>
 
   <!-- Parallax -->
-  <section class="parallax">
-    <div class="parallax-overlay" data-aos="fade-up">
+  <section class="parallax-split">
+  <div class="parallax-left">
+    <img src="/images/erikastandingsmaller.png" alt="Parallax Image" />
+  </div>
+  <div class="parallax-right">
+    <div class="parallax-overlay">
       <h2>Parallax Section</h2>
       <p>Background stays fixed while scrolling content moves.</p>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- GSAP Scroll Section -->
   <section class="scroll-section">
@@ -128,6 +133,7 @@
   <footer>
     © 2025 MyPortfolio. All rights reserved.
   </footer>
+  </main>
 
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

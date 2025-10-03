@@ -19,12 +19,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: #111;
+  background: var(--color-background-dark);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  color: white;
+  color: var(--color-primary);
   transition: transform 1s ease;    
 }
 
@@ -33,16 +33,29 @@
   font-weight: bold;
 }
 
-/* Slide-up exit (no opacity change) */
 .preloader-finish {
   transform: translateY(-100%);
 }
-
 
 @keyframes zoomOut {
   0% { transform: scale(1); opacity: 1; }
   100% { transform: scale(1.2); opacity: 0; }
 }
+
+#main-content {
+  height: 100vh;               /* viewport height */
+  overflow-y: scroll;           /* enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* vertical snap */
+  scroll-behavior: smooth;      /* smooth scrolling */
+}
+
+/* Each section snaps to start */
+#main-content section {
+  scroll-snap-align: start;
+  min-height: 100vh;           /* fill viewport */
+}
+
+
 
 body {
   font-family: var(--font-body);
@@ -53,7 +66,6 @@ body {
 
 /* Container */
 .container {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-md);
   display: flex;
@@ -81,6 +93,7 @@ body {
   color: var(--color-primary);
   font-weight: bold;
   font-size: 20px;
+  padding-right: 15px;
 }
 .nav-links a:hover {
   color: var(--color-secondary);
@@ -92,24 +105,20 @@ body {
 }
 
 .hero {
+  position: relative;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
+  background-color: var(--color-background); /* keep your existing color */
   padding: var(--spacing-xl) var(--spacing-md);
-
-  /* Replace gradient with background image */
-  background-image: url('/images/wearinghatesidewaysedited.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  position: relative;
   color: var(--color-white);
+  z-index: 0; /* base layer */
 }
 
-/* Optional: Add overlay for better text visibility */
+/* Optional overlay for text readability (you can remove if not needed) */
 .hero::before {
   content: "";
   position: absolute;
@@ -117,41 +126,77 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.4); /* adjust darkness as needed */
+  background: rgba(0,0,0,0.0); /* no darkening; keep fully transparent */
   z-index: 0;
 }
 
+/* Grain overlay */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* allows clicks through */
+  background-image: repeating-conic-gradient(
+    rgba(255,255,255,0.05) 0% 10%, 
+    rgba(0,0,0,0.05) 10% 20%
+  );
+  background-size: 3px 3px; /* adjust grain density */
+  z-index: 1; /* sits above background but below text */
+  animation: grainMove 10s linear infinite; /* optional moving grain */
+}
+
+/* Animate the grain (optional) */
+@keyframes grainMove {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* Keep your hero content above the overlay */
 .hero-text,
 .hero-animation {
   position: relative;
-  z-index: 1; /* keep content above overlay */
+  z-index: 2;
 }
+
 
 
 /* Parallax */
-.parallax {
-  height: 100vh;
-  background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+.parallax-split {
+  display: flex;
+  height: 100vh; /* exactly one viewport tall */
+  overflow: hidden; /* prevent extra scroll */
+}
+
+/* Left image container */
+.parallax-left {
+  flex: 1;
+  overflow: hidden; /* prevent image from overflowing */
+  position: relative;
+}
+
+.parallax-left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* fills container, keeps aspect ratio */
+  display: block;
+}
+
+/* Right text area */
+.parallax-right {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-.parallax-overlay {
-  background-color: rgba(0,0,0,0.5);
+  background-color: var(--color-background-dark); 
   padding: var(--spacing-lg);
-  border-radius: var(--radius-lg);
+}
+
+.parallax-overlay {
   text-align: center;
-}
-.parallax-overlay h2 {
-  font-size: 2rem;
   color: var(--color-white);
-}
-.parallax-overlay p {
-  margin-top: var(--spacing-sm);
-  color: #f9fafb;
 }
 
 /* GSAP Scroll Section */
