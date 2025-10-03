@@ -199,6 +199,28 @@ body {
   color: var(--color-white);
 }
 
+@media (max-width: 768px) {
+  .parallax-split {
+    flex-direction: column; /* stack left and right vertically */
+    height: auto;           /* let height adjust based on content */
+  }
+
+  .parallax-left,
+  .parallax-right {
+    flex: unset;            /* remove flex: 1 */
+    width: 100%;            /* full width */
+    min-height: 50vh;       /* optional: each takes half the viewport height */
+  }
+
+  .parallax-left img {
+    height: 100%;           /* fills the container */
+  }
+
+  .parallax-right {
+    padding: 2rem;          /* adjust as needed */
+  }
+}
+
 /* GSAP Scroll Section */
 .scroll-section {
   height: 100vh;
