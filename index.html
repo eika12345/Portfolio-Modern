@@ -3,106 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mobile-First Portfolio</title>
-  
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- AOS -->
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/stylesheet.css">
+
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
+
+  <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    let progress = 0;
+    const progressText = document.getElementById("progress-text");
+    const preloader = document.getElementById("preloader");
+    const content = document.getElementById("content");
+
+    function updateProgress() {
+      if (progress < 100) {
+        progress += Math.floor(Math.random() * 11) + 5;
+        if (progress > 100) progress = 100;
+
+        progressText.textContent = progress + "%";
+
+        const delay = Math.floor(Math.random() * 300) + 25;
+        setTimeout(updateProgress, delay);
+      } else {
+        // Pause at 100% before sliding
+        setTimeout(() => {
+          preloader.classList.add("preloader-finish");
+
+          // Allow content to be visible immediately
+          content.style.display = "block";
+
+          // Remove preloader from DOM after animation
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 1000); // match CSS transition
+        }, 1000); // pause time
+      }
+    }
+
+    updateProgress();
+  });
+</script>
+
+
+
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body>
+   <!-- Loading Screen -->
+<div id="preloader">
+  <div class="loader">
+    <span id="progress-text">0%</span>
+  </div>
+</div>
 
   <!-- Navbar -->
-  <nav class="fixed top-0 w-full bg-white shadow z-10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-      <h1 class="text-lg sm:text-xl font-bold text-blue-600">MyPortfolio</h1>
-      <div class="space-x-4 sm:space-x-6 text-sm sm:text-base">
-        <a href="#about" class="hover:text-blue-500">About</a>
-        <a href="#projects" class="hover:text-blue-500">Projects</a>
-        <a href="#contact" class="hover:text-blue-500">Contact</a>
-      </div>
+  <nav class="navbar">
+  <div class="container">
+    <a href="#">
+      <img src="images/ep.logo.png" alt="Logo" class="logo-img">
+    </a>
+    <div class="nav-links">
+      <a href="#projects">PROJECTS</a>
     </div>
-  </nav>
+  </div>
+</nav>
 
-  <!-- Hero Section -->
-  <section class="h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-center px-4 sm:px-6">
-    <div data-aos="fade-up">
-      <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold">Hi, I'm Alex 👋</h2>
-      <p class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg">Frontend Developer with React & Tailwind</p>
-      <a href="#projects" 
-         class="mt-4 sm:mt-6 inline-block bg-white text-blue-600 px-4 py-2 sm:px-6 sm:py-3 md:px-8 md:py-4 rounded-md font-medium hover:bg-gray-100 transition">
-         See My Work
-      </a>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-text" data-aos="fade-up">
+      <h2>Hi, I'm Alex 👋</h2>
+      <p>Frontend Developer</p>
+      <a href="#projects" class="btn-primary">See My Work</a>
     </div>
-  </section>
-
-  <!-- Fixed Parallax Background Section -->
-  <section 
-    class="h-screen bg-fixed bg-cover bg-center flex items-center justify-center text-white px-4"
-    style="background-image: url('https://images.unsplash.com/photo-1503264116251-35a269479413?auto=format&fit=crop&w=1600&q=80');"
-  >
-    <div class="bg-black/50 p-6 sm:p-10 rounded-xl text-center" data-aos="fade-up">
-      <h2 class="text-2xl sm:text-3xl md:text-5xl font-bold">Parallax Section</h2>
-      <p class="mt-2 sm:mt-4 text-sm sm:text-base md:text-lg">Background stays fixed while scrolling content moves.</p>
+    <div class="hero-animation" data-aos="fade-left">
+      <img src="images/hero-illustration.png" alt="Hero Illustration">
     </div>
   </section>
 
-  <!-- GSAP ScrollTrigger Section -->
-  <section id="gsap-section" class="h-screen flex items-center justify-center bg-gray-100 text-gray-900 px-4">
-    <h2 id="scroll-text" class="text-3xl sm:text-4xl md:text-5xl font-bold">Scroll Me Up</h2>
+  <!-- Parallax -->
+  <section class="parallax">
+    <div class="parallax-overlay" data-aos="fade-up">
+      <h2>Parallax Section</h2>
+      <p>Background stays fixed while scrolling content moves.</p>
+    </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 sm:py-20">
-    <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 text-center">Projects</h3>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      <div class="bg-white rounded-lg shadow-md p-4 sm:p-6" data-aos="fade-up" data-aos-delay="100">
-        <h4 class="text-lg sm:text-xl font-semibold">Project 1</h4>
-        <p class="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">React + Tailwind landing page with animations.</p>
+  <!-- GSAP Scroll Section -->
+  <section class="scroll-section">
+    <h2 id="scroll-text">Scroll Me Up</h2>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects" class="projects">
+    <h3>Projects</h3>
+    <div class="projects-grid">
+      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+        <h4>Project 1</h4>
+        <p>React + animations</p>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-4 sm:p-6" data-aos="fade-up" data-aos-delay="200">
-        <h4 class="text-lg sm:text-xl font-semibold">Project 2</h4>
-        <p class="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">Portfolio template with scroll effects.</p>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+        <h4>Project 2</h4>
+        <p>Portfolio template</p>
       </div>
-      <div class="bg-white rounded-lg shadow-md p-4 sm:p-6" data-aos="fade-up" data-aos-delay="300">
-        <h4 class="text-lg sm:text-xl font-semibold">Project 3</h4>
-        <p class="mt-1 sm:mt-2 text-sm sm:text-base text-gray-600">Interactive UI with GSAP and Tailwind.</p>
+      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+        <h4>Project 3</h4>
+        <p>Interactive UI</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-12 sm:py-20 text-center px-4">
-    <div data-aos="zoom-in">
-      <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold">Get in Touch</h3>
-      <p class="mt-2 sm:mt-4 text-sm sm:text-base text-gray-600">Email me at <a href="mailto:you@example.com" class="text-blue-500">you@example.com</a></p>
-    </div>
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <h3 data-aos="zoom-in">Get in Touch</h3>
+    <p data-aos="zoom-in">Email me at <a href="mailto:you@example.com">you@example.com</a></p>
   </section>
 
   <!-- Footer -->
-  <footer class="bg-gray-900 text-gray-400 text-center py-6 text-sm sm:text-base">
+  <footer>
     © 2025 MyPortfolio. All rights reserved.
   </footer>
 
-  <!-- Initialize AOS -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 800,
-      once: true
-    });
+    AOS.init({ duration: 800, once: true });
 
-    // GSAP ScrollTrigger for moving text
     gsap.registerPlugin(ScrollTrigger);
     gsap.to("#scroll-text", {
-      y: -200, // move text up as user scrolls
+      y: -200,
       scrollTrigger: {
-        trigger: "#gsap-section",
+        trigger: ".scroll-section",
         start: "top bottom",
         end: "bottom top",
         scrub: true

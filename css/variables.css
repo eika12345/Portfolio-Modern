@@ -1,0 +1,26 @@
+:root {
+  /* Colors */
+  --color-primary: #00FFA7;
+  --color-secondary: #00FFA7;
+  --color-text: #111827;
+  --color-text-light: #4b5563;
+  --color-background: #f9fafb;
+  --color-background-dark: #111827;
+  --color-white: #ffffff;
+
+  /* Fonts */
+  --font-heading: "NeueMontreal", sans-serif;
+  --font-body:  "NeueMontreal", sans-serif;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 4rem;
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 1rem;
+}
