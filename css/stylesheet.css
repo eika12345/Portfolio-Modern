@@ -203,6 +203,7 @@ body {
   .parallax-split {
     flex-direction: column; /* stack left and right vertically */
     height: auto;           /* let height adjust based on content */
+    
   }
 
   .parallax-left,
@@ -214,6 +215,7 @@ body {
 
   .parallax-left img {
     height: 100%;           /* fills the container */
+    content: url(/images/mountainmobile.png);
   }
 
   .parallax-right {
