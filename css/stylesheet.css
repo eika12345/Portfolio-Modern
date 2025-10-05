@@ -45,18 +45,10 @@
 #main-content {
   height: 100vh;               /* viewport height */
   overflow-y: scroll;           /* enable vertical scrolling */
-  scroll-snap-type: y mandatory; /* vertical snap */
   scroll-behavior: smooth;      /* smooth scrolling */
 }
 
-/* Each section snaps to start */
-#main-content section {
-  scroll-snap-align: start;
-  min-height: 100vh;           /* fill viewport */
-}
-
-
-
+/*-----------------------------------------------------------------body---------------------------------------------------------------------------*/
 body {
   font-family: var(--font-body);
   background-color: var(--color-background);
@@ -118,20 +110,14 @@ body {
   z-index: 0; /* base layer */
 }
 
-/* Optional overlay for text readability (you can remove if not needed) */
-.hero::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.0); /* no darkening; keep fully transparent */
-  z-index: 0;
+/*------------------------grain overlay---------------------------*/
+
+.grain {
+  position: relative; /* make sure ::after positions correctly */
+  overflow: hidden;   /* optional: prevents grain overflow */
 }
 
-/* Grain overlay */
-.hero::after {
+.grain::after {
   content: "";
   position: absolute;
   top: 0;
@@ -144,15 +130,17 @@ body {
     rgba(0,0,0,0.05) 10% 20%
   );
   background-size: 3px 3px; /* adjust grain density */
-  z-index: 1; /* sits above background but below text */
-  animation: grainMove 10s linear infinite; /* optional moving grain */
+  z-index: 1; /* sits above background but below content */
+  animation: grainMove 10s linear infinite;
 }
 
-/* Animate the grain (optional) */
+/* Keep the same keyframes */
 @keyframes grainMove {
   0% { background-position: 0 0; }
   100% { background-position: 100px 100px; }
 }
+
+
 
 /* Keep your hero content above the overlay */
 .hero-text,
@@ -166,23 +154,43 @@ body {
 /* Parallax */
 .parallax-split {
   display: flex;
-  height: 100vh; /* exactly one viewport tall */
-  overflow: hidden; /* prevent extra scroll */
-}
-
-/* Left image container */
-.parallax-left {
-  flex: 1;
-  overflow: hidden; /* prevent image from overflowing */
+  height: 100vh;       /* can still use viewport height */
+  overflow: visible;    /* allow sticky to work */
   position: relative;
 }
 
-.parallax-left img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;  /* fills container, keeps aspect ratio */
-  display: block;
+.parallax-split {
+  display: flex;
+  height: 200vh; /* make section taller than viewport to allow sticky scrolling */
+  position: relative;
 }
+
+.parallax-left {
+  flex: 1;
+  position: relative; 
+}
+
+.sticky-image {
+  position: sticky;
+  top: 60%;          /* sticks to top of viewport */
+  width: 100%;
+}
+
+.sticky-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.parallax-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-background-dark); 
+  padding: var(--spacing-lg);
+}
+
 
 /* Right text area */
 .parallax-right {
@@ -215,7 +223,7 @@ body {
 
   .parallax-left img {
     height: 100%;           /* fills the container */
-    content: url(./images/mountainmobile.png);
+    /*content: url(/images/mountainmobile.png);*/
   }
 
   .parallax-right {
@@ -234,7 +242,6 @@ body {
 
 /* Projects */
 .projects {
-  max-width: 1200px;
   margin: 0 auto;
   padding: var(--spacing-xl) var(--spacing-md);
   text-align: center;
