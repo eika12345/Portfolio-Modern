@@ -154,25 +154,22 @@ body {
 /* Parallax */
 .parallax-split {
   display: flex;
-  height: 100vh;       /* can still use viewport height */
+  height: 200vh;       /* can still use viewport height */
   overflow: visible;    /* allow sticky to work */
   position: relative;
 }
 
-.parallax-split {
-  display: flex;
-  height: 200vh; /* make section taller than viewport to allow sticky scrolling */
-  position: relative;
-}
 
 .parallax-left {
   flex: 1;
   position: relative; 
+  background-color: var(--color-background); 
+
 }
 
 .sticky-image {
   position: sticky;
-  top: 60%;          /* sticks to top of viewport */
+  top: 5%;          /* sticks to top of viewport */
   width: 100%;
 }
 
@@ -187,20 +184,10 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background-dark); 
+  background-color: var(--color-background); 
   padding: var(--spacing-lg);
 }
 
-
-/* Right text area */
-.parallax-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-background-dark); 
-  padding: var(--spacing-lg);
-}
 
 .parallax-overlay {
   text-align: center;
@@ -229,6 +216,11 @@ body {
   .parallax-right {
     padding: 2rem;          /* adjust as needed */
   }
+  .sticky-image {
+  position: sticky;
+  top: 5%;          /* sticks to top of viewport */
+  width: 100%;
+}
 }
 
 /* GSAP Scroll Section */
