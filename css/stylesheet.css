@@ -215,7 +215,7 @@ body {
 
   .parallax-left img {
     height: 100%;           /* fills the container */
-    content: url(/images/mountainmobile.png);
+    content: url(./images/mountainmobile.png);
   }
 
   .parallax-right {
