@@ -50,6 +50,23 @@
 
     updateProgress();
   });
+
+  
+
+   document.addEventListener("DOMContentLoaded", () => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.parallax-left-text').forEach(el => {
+    observer.observe(el);
+  });
+});
 </script>
 
 
@@ -88,15 +105,23 @@
   <!-- Parallax -->
 <section class="parallax-split grain">
   <div class="parallax-left">
+    
     <div class="sticky-image">
       <img src="./images/about-me.png" alt="About Me">
     </div>
-    
+    <div class="parallax-left-text slide-up">
+    <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
   </div>
+
+  <div class="parallax-left-text slide-up">
+    <p>Every website these days looks exactly the same, which is why I decided to work in a style that ACTUALLY gets the user's attention.</p>
+  </div>
+  </div>
+
+
   <div class="parallax-right">
-    <div class="parallax-overlay">
-      <h2>Parallax Section</h2>
-      <p>Background stays fixed while scrolling content moves.</p>
+    <div class="parallax-right-text">
+      <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
     </div>
   </div>
 </section>

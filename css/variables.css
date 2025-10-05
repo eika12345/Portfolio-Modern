@@ -9,8 +9,9 @@
   --color-white: #ffffff;
 
   /* Fonts */
-  --font-heading: "NeueMontreal", sans-serif;
-  --font-body:  "NeueMontreal", sans-serif;
+  --font-heading: "NeueMontreal-Bold", sans-serif;
+  --font-body:  "NeueMontreal-Bold", sans-serif;
+  --font-body-medium: "NeueMontreal-Medium", sans-serif;
 
   /* Spacing */
   --spacing-xs: 0.25rem;

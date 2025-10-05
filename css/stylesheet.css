@@ -1,7 +1,13 @@
 /* Import font */
 @font-face {
-  font-family: "NeueMontreal";
+  font-family: "NeueMontreal-Bold";
   src: url("../fonts/NeueMontreal-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "NeueMontreal-Medium";
+  src: url("../fonts/NeueMontreal-Medium.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
@@ -109,6 +115,9 @@ body {
   color: var(--color-white);
   z-index: 0; /* base layer */
 }
+.hero-text p {
+  font-family: var(--font-body-medium);
+}
 
 /*------------------------grain overlay---------------------------*/
 
@@ -142,12 +151,12 @@ body {
 
 
 
-/* Keep your hero content above the overlay */
+/* Keep your hero content above the overlay 
 .hero-text,
 .hero-animation {
   position: relative;
   z-index: 2;
-}
+}*/
 
 
 
@@ -164,7 +173,6 @@ body {
   flex: 1;
   position: relative; 
   background-color: var(--color-background); 
-
 }
 
 .sticky-image {
@@ -178,7 +186,22 @@ body {
   height: auto;
   object-fit: cover;
 }
-
+.parallax-left-text {
+  padding: 25px 50px 25px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(60px);
+  transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity;
+}
+.parallax-left-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.parallax-left-text,.parallax-right-text p {
+  color: var(--color-white);
+  font-family: var(--font-body-medium);
+}
 .parallax-right {
   flex: 1;
   display: flex;
@@ -218,7 +241,7 @@ body {
   }
   .sticky-image {
   position: sticky;
-  top: 5%;          /* sticks to top of viewport */
+  top: 6%;          /* sticks to top of viewport */
   width: 100%;
 }
 }
