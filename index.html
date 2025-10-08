@@ -14,6 +14,7 @@
   <!-- AOS -->
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   
+  <!---------------------------------------- scripts ---------------------------------------->
 
   <script>
     // preloader //
@@ -67,6 +68,24 @@
     observer.observe(el);
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("open");
+    });
+
+    // Optional: close menu when a link is clicked
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("open");
+      });
+    });
+  });
 </script>
 
 
@@ -81,21 +100,31 @@
   </div>
 </div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!---------------------------------------- navbar ---------------------------------------->
+<nav class="navbar">
   <div class="container">
     <a href="index.html">
       <img src="images/ep.logo.png" alt="Logo" class="logo-img">
     </a>
+
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav Links -->
     <div class="nav-links">
       <a href="#projects">PROJECTS</a>
-      <a href="#projects">CONTACT</a>
-
+      <a href="#contact">CONTACT</a>
+      <a href="#contact">CV</a>
     </div>
   </div>
 </nav>
 
-  <!-- Hero -->
+    <!---------------------------------------- hero ---------------------------------------->
+
      <main id="main-content">
   <section class="hero grain">
     <div class="hero-text">
@@ -104,33 +133,83 @@
     </div>
   </section>
 
-  <!-- Parallax -->
+    <!---------------------------------------- parallax---------------------------------------->
+
 <section class="parallax-split grain">
   <div class="parallax-left">
     
     <div class="sticky-image">
       <img src="./images/about-me.png" alt="About Me">
     </div>
+
     <div class="parallax-left-text slide-up">
     <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
   </div>
-
-  <div class="parallax-left-text slide-up">
-    <p>Every website these days looks exactly the same, which is why I decided to work in a style that ACTUALLY gets the user's attention.</p>
+    <div class="parallax-left-text slide-up">
+    <p>I never pictured myself as becoming a web developer, but here I am now. I quickly grew a passion for it and couldn't stop myself from redesigning my portfolio websites as my skills grew.</p>
   </div>
+   <div class="parallax-left-text slide-up">
+    <p>I've decided that instead of just creating simple portfolios for myself, I should out outsource my skills and help businesses around the world.</p>
+  </div>
+
   </div>
 
 
   <div class="parallax-right">
-    <div class="parallax-right-text">
+    <!--<div class="parallax-right-text">
       <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
-    </div>
+    </div>-->
   </div>
 </section>
 
-  <!-- Projects -->
+  <!---------------------------------------- Projects ---------------------------------------->
   <section id="projects" class="projects grain">
-    <h3>Projects</h3>
+
+    <div class="sticky-image">
+      <img src="./images/projects.png" alt="projects">
+    </div>
+
+    <div class="projects-content">
+      <h2>Eika's Den - An online store</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis ex officiis fugiat magni, qui consequuntur iusto magnam molestiae obcaecati, ab soluta? Fugit consectetur magni veniam, illum maxime aut beatae.</p>
+    <div class="projects-content-images">
+    <img src="./images/erikasportfolio98.jpg" alt="erikas portfolio">
+    </div>
+    </div>
+
+    <div class="projects-content">
+      <h2>Eika's Den - An online store</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis ex officiis fugiat magni, qui consequuntur iusto magnam molestiae obcaecati, ab soluta? Fugit consectetur magni veniam, illum maxime aut beatae.</p>
+    <div class="projects-content-images">
+    <img src="./images/eikasden1.png" alt="eikas den">
+    </div>
+    </div>
+
+    <div class="projects-content">
+      <h2>Eika's Den - An online store</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis ex officiis fugiat magni, qui consequuntur iusto magnam molestiae obcaecati, ab soluta? Fugit consectetur magni veniam, illum maxime aut beatae.</p>
+    <div class="projects-content-images">
+    <img src="./images/erikasportfolio1.png" alt="erikas portfolio old">
+    </div>
+    </div>
+
+    <div class="projects-content">
+      <h2>Eika's Den - An online store</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis ex officiis fugiat magni, qui consequuntur iusto magnam molestiae obcaecati, ab soluta? Fugit consectetur magni veniam, illum maxime aut beatae.</p>
+    <div class="projects-content-images">
+    <img src="./images/website1.png" alt="erikas portfolio oldest">
+    </div>
+    </div>
+
+    <div class="projects-content">
+      <h2>Eika's Den - An online store</h2>
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor perspiciatis ex officiis fugiat magni, qui consequuntur iusto magnam molestiae obcaecati, ab soluta? Fugit consectetur magni veniam, illum maxime aut beatae.</p>
+    <div class="projects-content-images">
+    <img src="./images/nonamerppage1.png" alt="no name rp">
+    </div>
+    </div>
+    </section>
+   <!-- <h3>Projects</h3>
     <div class="projects-grid">
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <h4>Project 1</h4>
@@ -144,19 +223,19 @@
         <h4>Project 3</h4>
         <p>Interactive UI</p>
       </div>
-    </div>
-  </section>
+    </div>-->
+  
 
   <!-- Contact -->
-  <section id="contact" class="contact grain">
+  <!--<section id="contact" class="contact grain">
     <h3 data-aos="zoom-in">Get in Touch</h3>
     <p data-aos="zoom-in">Email me at <a href="mailto:you@example.com">you@example.com</a></p>
-  </section>
+  </section>-->
 
   <!-- Footer -->
-  <footer>
+  <!--<footer>
     © 2025 MyPortfolio. All rights reserved.
-  </footer>
+  </footer>-->
   </main>
 
   <!-- Scripts -->
