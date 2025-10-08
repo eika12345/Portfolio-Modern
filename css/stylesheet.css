@@ -300,94 +300,75 @@ body {
 
 
 
-/*----------------------------------------------parallax-----------------------------------------------*/
-.parallax-split {
-  display: flex;
-  height: 100vh;       /* can still use viewport height */
-  overflow: visible;    /* allow sticky to work */
-  position: relative;
+/*----------------------------------------------about me-----------------------------------------------*/
+
+.about {
+  text-align: center;
+  overflow: visible; /* allows sticky to work */
 }
 
-
-.parallax-left {
-  flex: 1;
-  position: relative; 
-  height: 65vh;
+.about-content {
+  padding: 100px 50px 100px 50px;
+  z-index: 1;
 }
-
 
 .sticky-image {
   position: sticky;
-  top: 5%;          /* sticks to top of viewport */
+  top: 48px;          /* sticks to top of viewport */
   width: 100%;
+  z-index: 5;  /* Above content */
+
+
 }
 
 .sticky-image img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  backdrop-filter: blur(5px);
   padding-left: 5px;
   padding-right: 5px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 100;
 }
-.parallax-left-text {
+
+
+.about-content-text {
   padding: 25px 50px 25px;
   text-align: center;
   opacity: 0;
   transform: translateY(60px);
   transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
+  z-index: 1;
+
 }
-.parallax-left-text.visible {
+.about-content-text.visible {
   opacity: 1;
   transform: translateY(0);
 }
-.parallax-left-text,.parallax-right-text p {
+.about-content-text p {
   color: var(--color-white);
   font-family: var(--font-body-medium);
-}
-.parallax-right {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: var(--color-background); 
-  padding: var(--spacing-lg);
+  
 }
 
 
-.parallax-overlay {
-  text-align: center;
-  color: var(--color-white);
-}
 
+
+/* ------------------max-width 768----------------- */
 @media (max-width: 768px) {
-  .parallax-split {
-    flex-direction: column; /* stack left and right vertically */
-    height: auto;           /* let height adjust based on content */
+  .about {
+    display: block;
+    height: auto;           
     
   }
 
-  .parallax-left,
-  .parallax-right {
-    flex: unset;            /* remove flex: 1 */
-    width: 100%;            /* full width */
-   /* min-height: 50vh;        optional: each takes half the viewport height */
-  }
-
-  .parallax-left img {
-    height: 100%;           /* fills the container */
-    /*content: url(/images/mountainmobile.png);*/
-  }
-
-  .parallax-right {
-    padding: 2rem;          /* adjust as needed */
-  }
   .sticky-image {
-  position: sticky;
-  top: 6%;          /* sticks to top of viewport */
-  width: 100%;
-}
+    position: sticky;
+    width: 100%;
+    top: 41px;
+  } 
 }
 
 /*----------------------------------------------gsap scroll-----------------------------------------------*/
@@ -407,9 +388,10 @@ body {
 
 }
 .projects-content {
-  /*border: 1px solid red;*/
-    padding: 80px 50px 25px 50px;
-
+    padding: 80px 10% 0 10%;
+}
+.projects-content-images {
+   padding: 25px 0;
 }
 .projects-content h2 {
   color: var(--color-white);
@@ -417,35 +399,28 @@ body {
 
 .projects-content p {
   color: var(--color-white);
+  font-family: var(--font-body-medium);
   }
-.projects-content-images {
-   padding: 25px 50px 25px;
-}
+
 .projects-content-images img {
   max-width: 100%;
   height: auto;
   display: block;
   border: 2px solid var(--color-white);
+  }
+
+  
+@media (max-width: 768px) {
+    .projects-content {
+        padding: 50px 6% 0 6%;  /* Remove bottom padding */
+    }
+    
+    .projects-content-images {
+        padding: 25px 0;  /* Remove side padding */
+    }
 }
-.projects-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-lg);
-}
-.project-card {
-  background: var(--color-white);
-  border-radius: var(--radius-lg);
-  padding: var(--spacing-md);
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-.project-card h4 {
-  font-size: 1.25rem;
-  font-weight: bold;
-}
-.project-card p {
-  margin-top: var(--spacing-sm);
-  color: var(--color-text-light);
-}
+
+
 
 /* Contact */
 .contact {

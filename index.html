@@ -17,7 +17,7 @@
   <!---------------------------------------- scripts ---------------------------------------->
 
   <script>
-    // preloader //
+    // preloader 100% screen //
   document.addEventListener("DOMContentLoaded", () => {
     let progress = 0;
     const progressText = document.getElementById("progress-text");
@@ -64,7 +64,7 @@
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.parallax-left-text').forEach(el => {
+  document.querySelectorAll('.about-content-text').forEach(el => {
     observer.observe(el);
   });
 });
@@ -133,33 +133,27 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </section>
 
-    <!---------------------------------------- parallax---------------------------------------->
+    <!---------------------------------------- about me ---------------------------------------->
 
-<section class="parallax-split grain">
-  <div class="parallax-left">
-    
+
+<section id="about-me" class="about grain">
+
     <div class="sticky-image">
-      <img src="./images/about-me.png" alt="About Me">
+      <img src="./images/about-me.png" alt="about me">
     </div>
 
-    <div class="parallax-left-text slide-up">
+  <div class="about-content">
+    <div class="about-content-text slide-up">
     <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
   </div>
-    <div class="parallax-left-text slide-up">
+    <div class="about-content-text slide-up">
     <p>I never pictured myself as becoming a web developer, but here I am now. I quickly grew a passion for it and couldn't stop myself from redesigning my portfolio websites as my skills grew.</p>
   </div>
-   <div class="parallax-left-text slide-up">
-    <p>I've decided that instead of just creating simple portfolios for myself, I should out outsource my skills and help businesses around the world.</p>
+   <div class="about-content-text slide-up">
+    <p>I've decided that instead of just creating simple portfolios for myself, I should outsource my skills and help businesses around the world.</p>
+  </div>
   </div>
 
-  </div>
-
-
-  <div class="parallax-right">
-    <!--<div class="parallax-right-text">
-      <p>I'm Erikas Petrauskas, a 20 year old full-stack web developer that specializes in making websites different from the standard formula everyone seemingly follows these days.</p>
-    </div>-->
-  </div>
 </section>
 
   <!---------------------------------------- Projects ---------------------------------------->
@@ -208,23 +202,8 @@ document.addEventListener("DOMContentLoaded", () => {
     <img src="./images/nonamerppage1.png" alt="no name rp">
     </div>
     </div>
-    </section>
-   <!-- <h3>Projects</h3>
-    <div class="projects-grid">
-      <div class="project-card" data-aos="fade-up" data-aos-delay="100">
-        <h4>Project 1</h4>
-        <p>React + animations</p>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="200">
-        <h4>Project 2</h4>
-        <p>Portfolio template</p>
-      </div>
-      <div class="project-card" data-aos="fade-up" data-aos-delay="300">
-        <h4>Project 3</h4>
-        <p>Interactive UI</p>
-      </div>
-    </div>-->
-  
+
+</section>
 
   <!-- Contact -->
   <!--<section id="contact" class="contact grain">
