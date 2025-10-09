@@ -308,7 +308,7 @@ body {
 }
 
 .about-content {
-  padding: 100px 50px 100px 50px;
+  padding: 100px 50px 0px 50px;
   z-index: 1;
 }
 
@@ -352,8 +352,37 @@ body {
   font-family: var(--font-body-medium);
   
 }
+/* ------------------skills----------------- */
 
 
+.skills {
+display: flex;
+flex-wrap: wrap;
+gap: 5px;
+justify-content: center;
+padding-bottom: 30px;
+}
+.skills-content {
+  padding: 50px;
+}
+
+.tag {
+padding: 5px 10px;
+border-radius: 8px;
+font-size: 14px;
+font-weight: bold;
+color: white;
+display: inline-block;
+}
+
+
+.html { border: 2px solid var(--color-white); }
+.css { border: 2px solid var(--color-white); }
+.js{ border: 2px solid var(--color-white); }
+.git { border: 2px solid var(--color-white); }
+.node { border: 2px solid var(--color-white); }
+.crm { border: 2px solid var(--color-white); }
+.brevo { border: 2px solid var(--color-white); }
 
 
 /* ------------------max-width 768----------------- */
@@ -369,6 +398,14 @@ body {
     width: 100%;
     top: 41px;
   } 
+  .about-content-text {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .about-content {
+    padding-left: 10%;
+    padding-right: 10%;
+  }
 }
 
 /*----------------------------------------------gsap scroll-----------------------------------------------*/

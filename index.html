@@ -86,6 +86,38 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+   // Ensure ScrollTrigger plugin is registered (safe to call even if registered earlier)
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+  }
+
+  // Run after everything (images, fonts, etc.) has loaded
+  window.addEventListener('load', () => {
+    const debugMarkers = false; // markers to see  GSAP triggers, set to true or false 
+
+    // If no .tag elements found, log and exit
+    const tags = document.querySelectorAll('.skills .tag');
+    if (!tags.length) {
+      console.warn('GSAP: no elements found with selector ".skills .tag"');
+      return;
+    }
+
+    gsap.from(tags, {
+      scrollTrigger: {
+        trigger: ".skills",
+        start: "top 80%",    // tweak to "top 90%", "center center", etc.
+        end: "bottom top",
+        toggleActions: "play none none none",
+        markers: debugMarkers
+      },
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.12,
+      ease: "power3.out"
+    });
+  });
 </script>
 
 
@@ -154,6 +186,19 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
   </div>
 
+  <section class="skills">
+
+    <div class="skills-content">
+<span class="tag html">HTML</span>
+<span class="tag css">CSS</span>
+<span class="tag js">JS</span>
+<span class="tag git">Git</span>
+<span class="tag node">Node</span>
+<span class="tag crm">CRM</span>
+<span class="tag brevo">Brevo</span>
+</div>
+  </section>
+
 </section>
 
   <!---------------------------------------- Projects ---------------------------------------->
@@ -220,18 +265,13 @@ document.addEventListener("DOMContentLoaded", () => {
   <!-- Scripts -->
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 800, once: true });
+
+     AOS.init({ duration: 800, once: true });
 
     gsap.registerPlugin(ScrollTrigger);
-    gsap.to("#scroll-text", {
-      y: -200,
-      scrollTrigger: {
-        trigger: ".scroll-section",
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true
-      }
-    });
+   
+    
+    
   </script>
 </body>
 </html>
