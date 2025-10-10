@@ -431,6 +431,7 @@ display: inline-block;
    padding: 25px 0;
 }
 .projects-content h2 {
+  margin-bottom: 20px;
   color: var(--color-white);
   }
 
@@ -455,6 +456,31 @@ display: inline-block;
     .projects-content-images {
         padding: 25px 0;  /* Remove side padding */
     }
+}
+/* ------------------project link and github images----------------- */
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.project-link:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+/* Base icon styling */
+.icon {
+  width: 25px;              /* adjust to fit your images */
+  height: 25px;
+  vertical-align: middle;
+  transition: transform 0.2s ease, opacity 0.3s ease, filter 0.3s ease;
+  filter: brightness(0) invert(1); /* makes dark icons white */
 }
 
 
