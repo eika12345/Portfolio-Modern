@@ -117,6 +117,35 @@ document.addEventListener("DOMContentLoaded", () => {
       stagger: 0.12,
       ease: "power3.out"
     });
+
+     // ========== Projects (new) ==========
+    // Animates each .projects-content block as you scroll into the projects section.
+    gsap.from(".projects .projects-content", {
+      scrollTrigger: {
+        trigger: ".projects",
+        start: "top 85%",        // tweak to control when animations start
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      y: 60,                    // slides up from below
+      duration: 0.8,
+      stagger: 0.18,            // stagger between each project card
+      ease: "power3.out"
+    });
+
+    // OPTIONAL: animate images inside each project slightly after the card
+    gsap.from(".projects .projects-content-images img", {
+      scrollTrigger: {
+        trigger: ".projects",
+        start: "top 85%",
+        toggleActions: "play none none none"
+      },
+      opacity: 0,
+      scale: 0.98,
+      duration: 0.9,
+      stagger: 0.18,
+      ease: "power3.out"
+    });
   });
 </script>
 
