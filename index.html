@@ -69,23 +69,7 @@
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const menuToggle = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
 
-    menuToggle.addEventListener("click", () => {
-      menuToggle.classList.toggle("active");
-      navLinks.classList.toggle("open");
-    });
-
-    // Optional: close menu when a link is clicked
-    navLinks.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("open");
-      });
-    });
-  });
 
    // Ensure ScrollTrigger plugin is registered (safe to call even if registered earlier)
   if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
@@ -160,9 +144,13 @@ document.addEventListener("DOMContentLoaded", () => {
     <span id="progress-text">0%</span>
   </div>
 </div>
+<div id="page-transition">
+  <div class="loading-text">Loading...</div>
+  <div class="loading-spinner"></div>
+</div>
+
 
   <!---------------------------------------- navbar ---------------------------------------->
-<div id="page-transition">
   <nav class="navbar">
   <div class="container">
     <a href="index.html">
@@ -184,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </nav>
-</div>
+
     <!---------------------------------------- hero ---------------------------------------->
 
      <main id="main-content">
@@ -379,7 +367,6 @@ document.addEventListener("DOMContentLoaded", () => {
     <button type="submit" class="submit-btn">Send Message</button>
   </form>
 </section>
-
   <!---------------------------------------- footer --------------------------------------->
 <footer id="footer" class="footer">
   <div class="footer-container">
@@ -390,6 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </div>
   </div>
 </footer>
+
   </main>
 
   <!-- Scripts -->
@@ -420,7 +408,87 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+  const pageTransition = document.getElementById("page-transition");
+  const allNavLinks = navLinks.querySelectorAll("a");
+  const logoLink = document.querySelector(".navbar .logo-img").parentElement;
+
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // Function to handle page transition
+  function handleTransition(href) {
+    // Slide in from left
+    pageTransition.classList.add("active");
     
+    // Scroll while transition is happening (at halfway point)
+    setTimeout(() => {
+      const targetSection = document.querySelector(href);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "instant" });
+      }
+    }, 300);
+    
+    // Wait for full slide-in, then slide out
+    setTimeout(() => {
+      pageTransition.classList.add("exit");
+      
+      // Remove classes after exit animation completes (stays at right)
+      setTimeout(() => {
+        pageTransition.classList.remove("active", "exit");
+      }, 600);
+    }, 600);
+  }
+
+  // Navigation links
+  allNavLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      const href = link.getAttribute("href");
+      
+      if (href.startsWith("#")) {
+        e.preventDefault();
+        
+        menuToggle.classList.remove("active");
+        navLinks.classList.remove("open");
+        
+        handleTransition(href);
+      }
+    });
+  });
+
+  // Logo click - scroll to top
+  logoLink.addEventListener("click", (e) => {
+    e.preventDefault();
+    
+    menuToggle.classList.remove("active");
+    navLinks.classList.remove("open");
+    
+    // Slide in from left
+    pageTransition.classList.add("active");
+    
+    // Scroll to top while covered
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }, 300);
+    
+    // Slide out to right
+    setTimeout(() => {
+      pageTransition.classList.add("exit");
+      
+      setTimeout(() => {
+        pageTransition.classList.remove("active", "exit");
+      }, 600);
+    }, 600);
+  });
+});
+
+
+
+
   </script>
 </body>
 </html>
