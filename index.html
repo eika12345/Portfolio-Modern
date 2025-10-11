@@ -3,7 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
+  <title>Erikas Petrauskas</title>
+  <meta name="description" content="Hi there. I'm Erikas Petrauskas, a full-stack web developer that specializes in making flashy websites different from the run-off-the-mill sites you find these days.">
+
+  <link rel="icon" type="image/x-icon" href="./images/favicon.png">
   <link rel="stylesheet" href="css/variables.css">
   <link rel="stylesheet" href="css/stylesheet.css">
 
@@ -169,7 +172,7 @@
     <div class="nav-links">
       <a href="#projects">PROJECTS</a>
       <a href="#contact">CONTACT</a>
-      <a href="#contact">CV</a>
+      <a href="Erikas Petrauskas CV 2025.pdf" target="_blank">CV</a>
     </div>
   </div>
 </nav>
@@ -379,7 +382,7 @@
     <p>Made by Erikas Petrauskas. Contact form powered by <a href="https://formspree.io/" target="_blank" style="color: var(--color-primary);">Formspree</a></p>
     <div class="footer-links">
       <a href="#projects">Projects</a>
-      <a href="#privacy">CV</a>
+      <a href="Erikas Petrauskas CV 2025.pdf" target="_blank">CV</a>
     </div>
   </div>
 </footer>
@@ -391,107 +394,114 @@
   <script>
 
      AOS.init({ duration: 800, once: true });
+  gsap.registerPlugin(ScrollTrigger);
 
-    gsap.registerPlugin(ScrollTrigger);
+  // Formspree (contact form)
+  document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = e.target;
 
-
-   // formspree
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-
-  fetch(form.action, {
-    method: form.method,
-    body: new FormData(form),
-    headers: { 'Accept': 'application/json' }
-  }).then(response => {
-    if (response.ok) {
-      alert("Thank you! Your message has been sent.");
-      form.reset();
-    } else {
-      alert("Oops! Something went wrong.");
-    }
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navLinks = document.querySelector(".nav-links");
-  const pageTransition = document.getElementById("page-transition");
-  const allNavLinks = navLinks.querySelectorAll("a");
-  const logoLink = document.querySelector(".navbar .logo-img").parentElement;
-
-  menuToggle.addEventListener("click", () => {
-    menuToggle.classList.toggle("active");
-    navLinks.classList.toggle("open");
-  });
-
-  // Function to handle page transition
-  function handleTransition(href) {
-    // Slide in from left
-    pageTransition.classList.add("active");
-    
-    // Scroll while transition is happening (at halfway point)
-    setTimeout(() => {
-      const targetSection = document.querySelector(href);
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: "instant" });
-      }
-    }, 300);
-    
-    // Wait for full slide-in, then slide out
-    setTimeout(() => {
-      pageTransition.classList.add("exit");
-      
-      // Remove classes after exit animation completes (stays at right)
-      setTimeout(() => {
-        pageTransition.classList.remove("active", "exit");
-      }, 600);
-    }, 600);
-  }
-
-  // Navigation links
-  allNavLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      const href = link.getAttribute("href");
-      
-      if (href.startsWith("#")) {
-        e.preventDefault();
-        
-        menuToggle.classList.remove("active");
-        navLinks.classList.remove("open");
-        
-        handleTransition(href);
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        alert("Thank you! Your message has been sent.");
+        form.reset();
+      } else {
+        alert("Oops! Something went wrong.");
       }
     });
   });
 
-  // Logo click - scroll to top
-  logoLink.addEventListener("click", (e) => {
-    e.preventDefault();
-    
-    menuToggle.classList.remove("active");
-    navLinks.classList.remove("open");
-    
-    // Slide in from left
-    pageTransition.classList.add("active");
-    
-    // Scroll to top while covered
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "instant" });
-    }, 300);
-    
-    // Slide out to right
-    setTimeout(() => {
-      pageTransition.classList.add("exit");
-      
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const pageTransition = document.getElementById("page-transition");
+    const allNavLinks = navLinks.querySelectorAll("a");
+    const logoLink = document.querySelector(".navbar .logo-img").parentElement;
+
+    // ✅ NEW: Footer links
+    const footerLinks = document.querySelectorAll(".footer-links a");
+
+    // Toggle mobile menu
+    menuToggle.addEventListener("click", () => {
+      menuToggle.classList.toggle("active");
+      navLinks.classList.toggle("open");
+    });
+
+    // Overlay page transition handler
+    function handleTransition(href) {
+      pageTransition.classList.add("active");
+
+      // Scroll while covered by transition
       setTimeout(() => {
-        pageTransition.classList.remove("active", "exit");
+        const targetSection = document.querySelector(href);
+        if (targetSection) {
+          targetSection.scrollIntoView({ behavior: "smooth" }); // smooth scroll
+        }
+      }, 300);
+
+      // Slide out after animation
+      setTimeout(() => {
+        pageTransition.classList.add("exit");
+
+        // Remove after animation completes
+        setTimeout(() => {
+          pageTransition.classList.remove("active", "exit");
+        }, 600);
       }, 600);
-    }, 600);
+    }
+
+    // Navbar link clicks
+    allNavLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          menuToggle.classList.remove("active");
+          navLinks.classList.remove("open");
+          handleTransition(href);
+        }
+      });
+    });
+
+    // ✅ Footer link clicks (NEW)
+    footerLinks.forEach(link => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+
+        if (href.startsWith("#")) {
+          e.preventDefault();
+          handleTransition(href);
+        }
+      });
+    });
+
+    // Logo click — scroll to top with transition
+    logoLink.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      menuToggle.classList.remove("active");
+      navLinks.classList.remove("open");
+
+      pageTransition.classList.add("active");
+
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: "instant" });
+      }, 300);
+
+      setTimeout(() => {
+        pageTransition.classList.add("exit");
+
+        setTimeout(() => {
+          pageTransition.classList.remove("active", "exit");
+        }, 600);
+      }, 600);
+    });
   });
-});
-// 
 
 
   </script>

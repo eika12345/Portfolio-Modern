@@ -310,7 +310,7 @@ body {
 .sticky-image {
   position: sticky;
   top: 48px;
-  width: 50%;         /* or max-width: 800px if you prefer fixed limit */
+  width: 30%;         /* or max-width: 800px if you prefer fixed limit */
   margin: 0 auto;     /* centers the container */
   display: block;
   text-align: center; /* ensures inner image stays centered */
