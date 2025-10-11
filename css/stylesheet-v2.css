@@ -745,3 +745,53 @@ display: inline-block;
   background-size: 3px 3px;
   animation: grainMove 10s linear infinite;
 }
+
+.form-toast {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--color-background-dark);
+  color: var(--color-white);
+  border: 2px solid var(--color-primary);
+  padding: 14px 28px;
+  border-radius: 12px;
+  font-family: var(--font-body-medium);
+  font-size: 1rem;
+  opacity: 0;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+  transition: all 0.5s ease;
+  z-index: 9999;
+  text-align: center;
+}
+
+/* Visible state */
+.form-toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Hidden state (display:none avoids focus traps) */
+.form-toast.hidden {
+  display: none;
+}
+
+/* Colors for feedback */
+.form-toast.success {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.form-toast.error {
+  border-color: #ff6b6b;
+  color: #ff6b6b;
+}
+
+/* Mobile sizing */
+@media (max-width: 600px) {
+  .form-toast {
+    width: 90%;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+  }
+}
