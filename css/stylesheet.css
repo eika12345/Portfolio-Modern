@@ -300,30 +300,28 @@ body {
 .about {
   text-align: center;
   overflow: visible; /* allows sticky to work */
-  border: 1px solid red;
 }
 
 .about-content {
   padding: 100px 50px 0px 50px;
   z-index: 1;
-  border: 1px solid greenyellow;
 }
 
 .sticky-image {
   position: sticky;
-  top: 48px;          /* sticks to top of viewport */
-  width: 100%;
-  z-index: 5;  /* Above content */
-
-
+  top: 48px;
+  width: 50%;         /* or max-width: 800px if you prefer fixed limit */
+  margin: 0 auto;     /* centers the container */
+  display: block;
+  text-align: center; /* ensures inner image stays centered */
+  z-index: 5;
 }
 
 .sticky-image img {
   width: 100%;
   height: auto;
   object-fit: cover;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding: 0px 5px 0px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   z-index: 100;
@@ -358,11 +356,9 @@ flex-wrap: wrap;
 gap: 5px;
 justify-content: center;
 padding-bottom: 12%;
-border: 1px solid pink ;
 }
 .skills-content {
   padding: 50px;
-  border: 1px solid pink ;
 
 }
 
@@ -422,10 +418,13 @@ display: inline-block;
   text-align: center;
   /*border: 1px solid rgb(255, 230, 0);*/
   overflow: visible; /* allows sticky to work */
+  border: 1px solid red;
+  
 
 }
 .projects-content {
     padding: 80px 10% 0% 10%;   
+    border: 1px solid pink;
 }
 .projects-content-images {
    padding: 25px 0;
@@ -450,7 +449,7 @@ display: inline-block;
   /* final project image */
 
 .projects-content-final {
-    padding: 80px 10% 0% 10%;   
+    padding: 80px 10% 10% 10%;   
 }
 .projects-content-final-images {
    padding: 25px 0;
