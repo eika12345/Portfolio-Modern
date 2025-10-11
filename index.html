@@ -19,38 +19,39 @@
   <script>
     // preloader 100% screen //
   document.addEventListener("DOMContentLoaded", () => {
-    let progress = 0;
-    const progressText = document.getElementById("progress-text");
-    const preloader = document.getElementById("preloader");
-    const content = document.getElementById("content");
+  let progress = 0;
+  const progressText = document.getElementById("progress-text");
+  const preloader = document.getElementById("preloader");
 
-    function updateProgress() {
-      if (progress < 100) {
-        progress += Math.floor(Math.random() * 11) + 5;
-        if (progress > 100) progress = 100;
+  document.body.style.overflow = "hidden"; // disable scrolling during preload
 
-        progressText.textContent = progress + "%";
+  function updateProgress() {
+    if (progress < 100) {
+      progress += Math.floor(Math.random() * 11) + 5;
+      if (progress > 100) progress = 100;
 
-        const delay = Math.floor(Math.random() * 300) + 25; //300 25
-        setTimeout(updateProgress, delay);
-      } else {
-        // Pause at 100% before sliding
+      progressText.textContent = progress + "%";
+
+      const delay = Math.floor(Math.random() * 300) + 25;
+      setTimeout(updateProgress, delay);
+    } else {
+      // Pause at 100% before sliding
+      setTimeout(() => {
+        preloader.classList.add("preloader-finish");
+
+        // Re-enable scrolling when preloader slides away
+        document.body.style.overflow = "auto";
+
+        // Remove preloader from DOM after animation
         setTimeout(() => {
-          preloader.classList.add("preloader-finish");
-
-          // Allow content to be visible immediately
-          content.style.display = "block";
-
-          // Remove preloader from DOM after animation
-          setTimeout(() => {
-            preloader.style.display = "none";
-          }, 1000); // match CSS transition
-        }, 1000); // pause time
-      }
+          preloader.style.display = "none";
+        }, 1000); // match CSS transition
+      }, 1000); // pause time
     }
+  }
 
-    updateProgress();
-  });
+  updateProgress();
+});
 
   
 
@@ -366,6 +367,11 @@
 
     <button type="submit" class="submit-btn">Send Message</button>
   </form>
+
+  <div class="circle-image">
+  <img src="./images/mountaincircle.png" alt="me on mountain">
+  </div>
+
 </section>
   <!---------------------------------------- footer --------------------------------------->
 <footer id="footer" class="footer">
@@ -485,8 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 600);
   });
 });
-
-
+// 
 
 
   </script>
