@@ -353,6 +353,11 @@
     </div>
   <form id="contact-form" action="https://formspree.io/f/xovkkwpw" method="POST">
     <div class="form-group">
+      <!--honey pot field -->
+       <div class="hp-wrapper" aria-hidden="true" style="position: absolute; left: -9999px; top: -9999px; overflow: hidden; height: 1px; width: 1px;">
+       <label for="website" style="display:none;">Website</label>
+       <input id="website" name="website" type="text" autocomplete="off" tabindex="-1" />
+</div>
       <label for="name">Name</label>
       <input type="text" id="name" name="name" placeholder="Your name" required>
     </div>
