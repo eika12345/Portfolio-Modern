@@ -418,13 +418,11 @@ display: inline-block;
   text-align: center;
   /*border: 1px solid rgb(255, 230, 0);*/
   overflow: visible; /* allows sticky to work */
-  border: 1px solid red;
   
 
 }
 .projects-content {
     padding: 80px 10% 0% 10%;   
-    border: 1px solid pink;
 }
 .projects-content-images {
    padding: 25px 0;
