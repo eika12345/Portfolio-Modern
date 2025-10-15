@@ -406,41 +406,40 @@
 
   // Formspree (contact form)
    // Toast-based Formspree handler
-  document.getElementById('contact-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const form = e.target;
-    const toast = document.getElementById('form-toast');
-    const toastText = document.getElementById('form-toast-text');
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
+  e.preventDefault();
+  const form = e.target;
+  const toast = document.getElementById('form-toast');
+  const toastText = document.getElementById('form-toast-text');
 
-    // helper function to show toast
-    function showToast(message, type = 'success', duration = 3000) {
-      toastText.textContent = message;
-      toast.className = `form-toast ${type}`; // reset + apply type
-      toast.classList.remove('hidden');
-      // show animation
-      requestAnimationFrame(() => toast.classList.add('show'));
-      // hide after duration
-      setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.classList.add('hidden'), 500);
-      }, duration);
-    }
+  function showToast(message, type = 'success', duration = 3000) {
+    toastText.textContent = message;
+    toast.classList.remove('hidden', 'success', 'error');
+    toast.classList.add(type);
+    requestAnimationFrame(() => toast.classList.add('show'));
+    setTimeout(() => {
+      toast.classList.remove('show');
+      setTimeout(() => toast.classList.add('hidden'), 500);
+    }, duration);
+  }
 
-    fetch(form.action, {
+  try {
+    const response = await fetch(form.action, {
       method: form.method,
       body: new FormData(form),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if (response.ok) {
-        showToast(" Message sent successfully!", "success");
-        form.reset();
-      } else {
-        showToast(" Oops! Something went wrong.", "error");
-      }
-    }).catch(() => {
-      showToast(" Network error. Please try again later.", "error");
+      headers: { Accept: 'application/json' },
     });
-  });
+
+    if (response.ok) {
+      showToast('Message sent successfully!', 'success');
+      form.reset();
+    } else {
+      showToast('Oops! Something went wrong.', 'error');
+    }
+  } catch (error) {
+    showToast('Network error. Please try again later.', 'error');
+  }
+});
 
   document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.querySelector(".menu-toggle");
