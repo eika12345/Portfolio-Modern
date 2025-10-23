@@ -675,7 +675,7 @@ display: inline-block;
     justify-content: center;
     align-items: center;
   }
-  .hero-text h2 {
+  .hero-text h1 {
     font-size: 3rem;
   }
   .projects-grid {
