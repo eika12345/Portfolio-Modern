@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LF2RWTNF8B"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LF2RWTNF8B');
+
+document.addEventListener("DOMContentLoaded", () => {
+  const menuToggle = document.querySelector(".menu-toggle");
+  const navLinks = document.querySelector(".nav-links");
+
+  // Toggle mobile menu
+  menuToggle.addEventListener("click", () => {
+    menuToggle.classList.toggle("active");
+    navLinks.classList.toggle("open");
+  });
+
+  // Close menu when clicking a link
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    link.addEventListener("click", () => {
+      menuToggle.classList.remove("active");
+      navLinks.classList.remove("open");
+    });
+  });
+});
+</script>
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erikas Petrauskas</title>
+  <meta name="description" content="I modernise small businesses to attract more customers and look professional online.">
+
+ <!-- <link rel="icon" type="image/x-icon" href="./images/favicon.ico">-->
+
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+
+  <link rel="stylesheet" href="css/variables-v2.css">
+  <link rel="stylesheet" href="css/stylesheet-v2.css">
+
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+  <!-- AOS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+</head>
+<style>
+    .privacy {
+        padding: 50px 30% 50px 30%;
+        text-align: center;
+    }
+    h1 { 
+        color: var(--color-primary);
+        text-align: center;
+        padding: 50px;
+    }
+    p, h2 {
+                color: var(--color-white);
+    }
+    @media (max-width: 768px) {
+        .privacy {
+            padding: 50px 10% 50px 10%;
+        } 
+;
+    }
+</style>
+<!---------------------------------------- navbar ---------------------------------------->
+  <nav class="navbar">
+  <div class="container">
+    <a href="index.html">
+      <img src="images/ep.logo.png" alt="Logo" class="logo-img">
+    </a>
+
+    <!-- Hamburger Button -->
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="nav-links">
+      <a href="/#projects">PROJECTS</a>
+      <a href="/#contact">CONTACT</a>
+      <a href="Erikas Petrauskas CV 2025.pdf" target="_blank">CV</a>
+    </div>
+  </div>
+</nav>
+
+<body>
+
+    <div class="privacy grain">
+  <h1>Privacy Policy</h1>
+
+  <p>Last updated: November 2025</p><br>
+
+  <p>This website is operated by Erikas Petrauskas. This policy explains how data is collected through this website.</p><br>
+
+  <h2>1. Data Collection</h2><br>
+  <p>Google Analytics collects anonymous information such as page views, time spent on site, and general user behavior. This data helps understand how visitors use the site.</p><br>
+
+
+  <h2>2. Cookies</h2><br>
+  <p>Cookies are small text files stored on your device. They help websites function properly and provide anonymous usage information. You can block or delete cookies through your browser settings.</p><br>
+
+  <h2>3. Third-Party Services</h2><br>
+  <p>This site uses the following third-party services:</p><br>
+   
+    <p>Google Analytics — for anonymous website usage tracking.</p><br>
+    <p>Formspree — When you submit a message through the contact form on this website, your name, email address, and message are collected so that I can respond to your inquiry. Your personal data (name, email, and message) will only be used to reply to your inquiry and will not be shared or stored beyond what is necessary to manage communication.
+</p>
+
+
+  <br>
+
+  <h2>4. Your Rights</h2><br>
+  <p>You have the right to access, rectify, or erase any personal data (if collected), and to withdraw consent at any time.</p><br>
+
+  <h2>5. Contact</h2><br>
+  <p>If you have any questions about this policy, you can contact me at webdev@erikaspetrauskas.com.</p><br>
+  </div>
+
+   <!---------------------------------------- footer --------------------------------------->
+<footer id="footer" class="footer">
+  <div class="footer-container">
+    <p>Made by Erikas Petrauskas. Contact form powered by <a href="https://formspree.io/" target="_blank" style="color: var(--color-primary);">Formspree</a></p>
+    <div class="footer-links">
+      <a href="#projects">Projects</a>
+      <a href="privacy.html" target="_blank">Privacy</a>
+      <a href="Erikas Petrauskas CV 2025.pdf" target="_blank">CV</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
