@@ -303,8 +303,9 @@ body {
 }
 
 .about-content {
-  padding: 100px 50px 100px 50px;
+  padding: 60px 50px 60px 50px;
   z-index: 1;
+  
 }
 
 .sticky-image {
@@ -329,13 +330,15 @@ body {
 
 
 .about-content-text {
-  padding: 25px 30% 25px;
+  padding: 25px 35% 25px;
   text-align: center;
   opacity: 0;
   transform: translateY(60px);
   transition: all 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   will-change: transform, opacity;
   z-index: 1;
+    border: 1px solid red;
+
 
 }
 .about-content-text.visible {
@@ -423,7 +426,7 @@ display: inline-block;
 
 }
 .projects-content {
-    padding: 80px 10% 0% 10%;   
+      padding: 80px 10% 0% 10%;   
 }
 .projects-content-images {
    padding: 25px 0;
