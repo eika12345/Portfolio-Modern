@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 <!---------------------------------------- navbar ---------------------------------------->
   <nav class="navbar">
   <div class="container">
-    <a href="index.html">
+    <a href="/">
       <img src="images/ep.logo.png" alt="Logo" class="logo-img">
     </a>
 
@@ -134,10 +134,18 @@ document.addEventListener("DOMContentLoaded", () => {
     <p>Made by Erikas Petrauskas. Contact form powered by <a href="https://formspree.io/" target="_blank" style="color: var(--color-primary);">Formspree</a></p>
     <div class="footer-links">
       <a href="#projects">Projects</a>
-      <a href="privacy.html" target="_blank">Privacy</a>
+      <a href="/privacy">Privacy</a>
       <a href="Erikas Petrauskas CV 2025.pdf" target="_blank">CV</a>
     </div>
   </div>
 </footer>
+
+<script>
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+</script>
+
+
 </body>
 </html>
