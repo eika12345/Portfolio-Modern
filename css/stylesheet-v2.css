@@ -347,7 +347,9 @@ body {
 .about-content-text p {
   color: var(--color-white);
   font-family: var(--font-body-medium);
-  
+}
+.about-content-text h3 {
+  color: var(--color-primary);
 }
 /* ------------------skills----------------- */
 
