@@ -383,6 +383,8 @@ display: inline-block;
 .crm { border: 2px solid var(--color-white); }
 .brevo { border: 2px solid var(--color-white); }
 .stripe { border: 2px solid var(--color-white); }
+.supabase { border: 2px solid var(--color-white); }
+
 
 
 
